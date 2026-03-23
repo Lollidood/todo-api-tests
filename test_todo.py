@@ -13,3 +13,9 @@ def test_get_single_todo():
     
     assert response.status_code == 200
     assert response.json()["id"] == 1
+
+def test_todo_completed_field():
+    response = requests.get(f"{BASE_URL}/todos/1")
+    data = response.json()
+    
+    assert "completed" in data
